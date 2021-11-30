@@ -255,7 +255,8 @@ const HomePage = () => {
 </footer>
  `;
  
-    pageEntiere = home;
+ 
+    pageEntiere.innerHTML =home ;
  };
   
   export default HomePage;
