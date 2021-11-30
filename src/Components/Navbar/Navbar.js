@@ -16,7 +16,7 @@ const Navbar = () => {
   let navbar = `
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Add your brand here</a>
+          <a class="navbar-brand" href="#">GameReview</a>
           <button
             class="navbar-toggler"
             type="button"
