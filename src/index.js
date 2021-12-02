@@ -1,16 +1,9 @@
-// Import Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
-// Custom styles
-import './stylesheets/main.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./stylesheets/style.css"; // If you prefer to style your app with vanilla CSS rather than with Bootstrap
 
-// Import Navbar
 import Navbar from "./Components/Navbar/Navbar";
-import HomePage from './Components/Pages/HomePage';
-
-// This is the entry point to your app : add all relevant import and custom code
+import { Router } from "./Components/Router/Router";
 
 Navbar();
-HomePage();
 
-
-
+Router(); // The router will automatically load the root page

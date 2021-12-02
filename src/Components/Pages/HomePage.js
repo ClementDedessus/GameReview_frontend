@@ -1,7 +1,7 @@
 
-
 const HomePage = () => { 
-    const pageEntiere = document.querySelector("page");
+    const main = document.querySelector("#main");
+     
     let home = `  <div class="container">
   <header class="blog-header py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
@@ -256,7 +256,8 @@ const HomePage = () => {
  `;
  
  
-    pageEntiere.innerHTML =home ;
- };
-  
-  export default HomePage;
+main.innerHTML=home
+
+}
+
+export default HomePage;

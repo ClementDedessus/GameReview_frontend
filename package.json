@@ -1,13 +1,14 @@
 {
-  "name": "myjscourse-webpack-boilerplate",
+  "name": "js-router-boilerplate",
   "version": "1.0.0",
-  "description": "myJScourse's frontend boilerplate",
+  "description": "myJScourse's frontend boilerplate with a router",
   "scripts": {
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
     "start": "webpack serve --mode development"
   },
   "author": "e-baron",
+  "license": "CC-BY-SA-4.0",
   "devDependencies": {
     "@babel/core": "^7.14.3",
     "@babel/preset-env": "^7.14.4",
@@ -23,6 +24,5 @@
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.1"
-  },
-  "license": "CC-BY-SA-4.0"
+  }
 }
