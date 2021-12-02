@@ -10,7 +10,7 @@ const Navbar = () => {
       e.preventDefault();
       console.log(`click on ${e.target.innerHTML} navbar item`);
 
-      if (e.target.innerHTML === "Home") {
+      if (e.target.innerHTML === "Accueil") {
         HomePage();
       }
       
