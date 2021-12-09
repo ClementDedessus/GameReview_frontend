@@ -1,4 +1,4 @@
-import HomePage from "./HomePage";
+import { setSessionObject } from "../utils/session";
 import { Redirect } from "../Router/Router";
 
 const registerpage = `
@@ -61,6 +61,8 @@ function RegisterPage() {
         "fetch error : " + response.status + " : " + response.statusText
       );
     }
+    const user = await response.json(); 
+    setSessionObject("user", user);
     Navbar({ isAuthenticated: true });
     Redirect("/");
   } catch (error) {

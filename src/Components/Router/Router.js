@@ -3,13 +3,20 @@ import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import LogoutPage from "../Pages/LogoutPage";
 import ProfilPage from "../Pages/ProfilPage";
+import usernamePage from "../Pages/ChangeUsernamePage";
+import passpage from "../Pages/ChangePasswordPage";
+import battlefield from "../Pages/BattlefieldPage";
+import addpage from "../Pages/AddjeuPage";
 const routes = {
-  "//": HomePage,
+  "/": HomePage,
   "/login": LoginPage,
   "/register": RegisterPage,
   "/logout": LogoutPage,
   "/profil": ProfilPage,
-
+  "/changeusername":usernamePage,
+  "/changepassword":passpage,
+  "/pageBattlefield":battlefield,
+  "/add":addpage
 };
 
 

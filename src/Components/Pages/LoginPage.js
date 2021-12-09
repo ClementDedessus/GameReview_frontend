@@ -1,4 +1,3 @@
-import HomePage from "./HomePage";
 import{setSessionObject} from "../utils/session"
 import { Redirect } from "../Router/Router";
 const loginpage = `
@@ -34,20 +33,15 @@ const loginpage = `
     <div id="r"></div>
     
     </div`;
-/**
- * Render the NewPage :
- * Just an example to demonstrate how to use the router to "redirect" to a new page
- */
 function LoginPage() {
-  //const username = document.querySelector("#username");
-  //const password = document.querySelector("#password");
+  
   const main = document.querySelector("#main");
   main.innerHTML = loginpage;
   const Form = document.querySelector("form");
   const username = document.querySelector("#username");
 const password = document.querySelector("#password");
  Form.addEventListener("submit" ,async (event)  =>{
-   event.preventDefault();
+  event.preventDefault(); 
   try {
     const options = {
       method: "POST",
@@ -74,7 +68,13 @@ const password = document.querySelector("#password");
   } catch (error) {
     console.error("LoginPage::error: ", error);
   }
+  /*
+  setTimeout(() => {
+    window.location.reload();;
+   },  3000);
+   */
  });
+ 
 }
 
 export default LoginPage;
