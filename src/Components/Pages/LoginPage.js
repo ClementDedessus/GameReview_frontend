@@ -1,5 +1,6 @@
-import{setSessionObject} from "../utils/session"
+import { setSessionObject } from "../utils/session";
 import { Redirect } from "../Router/Router";
+import Navbar from "../Navbar/Navbar";
 const loginpage = `
     <div class="text-center">
       <h3>Login</h3>
@@ -34,47 +35,45 @@ const loginpage = `
     
     </div`;
 function LoginPage() {
-  
   const main = document.querySelector("#main");
   main.innerHTML = loginpage;
   const Form = document.querySelector("form");
   const username = document.querySelector("#username");
-const password = document.querySelector("#password");
- Form.addEventListener("submit" ,async (event)  =>{
-  event.preventDefault(); 
-  try {
-    const options = {
-      method: "POST",
-      body: JSON.stringify({
-        username: username.value,
-        password: password.value,
-      }), 
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+  const password = document.querySelector("#password");
+  Form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-    const response = await fetch("/api/auths/login", options);  
+      const response = await fetch("/api/auths/login", options);
 
-    if (!response.ok) {
-      throw new Error(
-        "fetch error : " + response.status + " : " + response.statusText
-      );
+      if (!response.ok) {
+        throw new Error(
+          "fetch error : " + response.status + " : " + response.statusText
+        );
+      }
+      const user = await response.json();
+      setSessionObject("user", user);
+      Navbar({ isAuthenticated: true });
+      Redirect("/");
+    } catch (error) {
+      console.error("LoginPage::error: ", error);
     }
-    const user = await response.json();
-    setSessionObject("user", user);
-    Navbar({isAuthenticated:true});
-    Redirect("/");
-  } catch (error) {
-    console.error("LoginPage::error: ", error);
-  }
-  /*
+    /*
   setTimeout(() => {
     window.location.reload();;
    },  3000);
    */
- });
- 
+  });
 }
 
 export default LoginPage;

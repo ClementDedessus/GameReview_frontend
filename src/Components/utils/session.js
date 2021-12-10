@@ -5,7 +5,6 @@ const getSessionObject = (storeName) => {
   return JSON.parse(retrievedObject);
 };
 
-
 const setSessionObject = (storeName, object) => {
   const storageValue = JSON.stringify(object);
   localStorage.setItem(storeName, storageValue);

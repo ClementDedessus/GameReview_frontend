@@ -1,4 +1,3 @@
-
 import { Navbar as BootstrapNavbar } from "bootstrap";
 import { getSessionObject } from "../utils/session";
 
@@ -76,7 +75,10 @@ const Navbar = () => {
             </li>     
             <li class="nav-item">
             <a class="nav-link disabled" href="#" data-uri="/pageBattlefield"></a>
-          </li>                   
+          </li>     
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" data-uri="/pageNewWorld"></a>
+          </li>               
             </ul>
           </div>
         </div>

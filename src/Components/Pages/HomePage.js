@@ -1,6 +1,4 @@
-import { Redirect } from "../Router/Router";
 import newworldpage from "./NewWorldPage";
-import battlefield from "./BattlefieldPage";
 const page = `<nav class="navbar navbar-light bg-light">
 <div class="right">
   <form id ="form" class="d-flex">
@@ -11,16 +9,15 @@ const page = `<nav class="navbar navbar-light bg-light">
 </nav>`;
 const HomePage = async () => {
   const main = document.querySelector("#main");
-  main.innerHTML=page
-  const form = document.querySelector("form");
+  main.innerHTML = page;
   const searchBare = document.querySelector("#search");
   try {
-    const response = await fetch(`/api/jeu?age=${searchBare.value}`); 
+    const response = await fetch(`/api/jeu?age=${searchBare.value}`);
+    // search barre a faire !!!!!!!!!
     if (!response.ok) {
       throw new Error(
         "fetch error : " + response.status + " : " + response.statusText
       );
-      
     }
     const jeux = await response.json();
     jeux.forEach((jeu) => {
@@ -33,19 +30,15 @@ const HomePage = async () => {
       img.src = jeu.cover;
       img.width = 300;
       img.height = 200;
-      img.addEventListener("click",(event)=>{
-        if(jeu.name === "Battlefield 2042"){
-           // Redirect( "/pageBattlefield")
-           window.location="/pageBattlefield"
-           
-       //battlefield()
+      img.addEventListener("click", (event) => {
+        if (jeu.name === "Battlefield 2042") {
+          window.location = "/pageBattlefield";
         }
-        if(jeu.name === "New World"){
-          newworldpage()
+        if (jeu.name === "New World") {
+          window.location = "/pageNewWorld";
         }
-      })
-      
-    })
+      });
+    });
   } catch (error) {
     console.error("Homepage::error: ", error);
   }

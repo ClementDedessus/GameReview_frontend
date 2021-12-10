@@ -1,10 +1,8 @@
 import { getSessionObject } from "../utils/session";
 
 const formaddpage = `<div class="text-center">
- 
-<h3></h3>
 
-
+<h3>Add Game</h3>
 <form class="px-5">
 <div class="mb-3">
 <label for="<name">name</label>
@@ -168,65 +166,62 @@ const formaddpage = `<div class="text-center">
 <div id="r"></div>
 
 </div`;
-const addpage = async ()=>{
-    let user = getSessionObject("user");
-    const main = document.querySelector("#main");
-    main.innerHTML=formaddpage
-    const Form = document.querySelector("form");
-    const name = document.querySelector("#name");
-    const age_ratings = document.querySelector("#age_ratings");
-    const category = document.querySelector("#category");
-    const cover = document.querySelector("#cover");
-    const first_release_date = document.querySelector("#first_release_date");
-    const involved_companies = document.querySelector("#involved_companies");
-    const keywords = document.querySelector("#keywords");
-    const multiplayer_modes = document.querySelector("#multiplayer_modes");
-    const platforms = document.querySelector("#platforms");
-    const rating = document.querySelector("#rating");
-    const screenshots = document.querySelector("#screenshots");
-    const summary = document.querySelector("#summary");
-    const url = document.querySelector("#url");
-    const videos = document.querySelector("#videos");
-    
-    Form.addEventListener("submit", async (event) =>{
-        event.preventDefault()
-        try {
-          const options = {
-            method: "POST", 
-            body: JSON.stringify({
-                name: name.value,
-                age_ratings: age_ratings.value,
-                category: category.value,
-                cover: cover.value,
-                first_release_date: first_release_date.value,
-                involved_companies: involved_companies.value,
-                keywords: keywords.value,
-                multiplayer_modes: multiplayer_modes.value,
-                platforms: platforms.value,
-                rating: rating.value,
-                screenshots: screenshots.value,
-                summary: summary.value,
-                url: url.value,
-                videos: videos.value
+const addpage = async () => {
+  let user = getSessionObject("user");
+  const main = document.querySelector("#main");
+  main.innerHTML = formaddpage;
+  const Form = document.querySelector("form");
+  const name = document.querySelector("#name");
+  const age_ratings = document.querySelector("#age_ratings");
+  const category = document.querySelector("#category");
+  const cover = document.querySelector("#cover");
+  const first_release_date = document.querySelector("#first_release_date");
+  const involved_companies = document.querySelector("#involved_companies");
+  const keywords = document.querySelector("#keywords");
+  const multiplayer_modes = document.querySelector("#multiplayer_modes");
+  const platforms = document.querySelector("#platforms");
+  const rating = document.querySelector("#rating");
+  const screenshots = document.querySelector("#screenshots");
+  const summary = document.querySelector("#summary");
+  const url = document.querySelector("#url");
+  const videos = document.querySelector("#videos");
 
-            }), 
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: user.token,
-            },
-          };
-      
-          const response = fetch("/api/jeu", options); 
-          if (!response.ok) {
-            throw new Error(
-              "fetch error : " + response.status + " : " + response.statusText
-            );
-          }
-        } catch (error) {
-          console.error("addpage::error: ", error);
-        }
-       });
+  Form.addEventListener("submit", async (event) => {
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify({
+          name: name.value,
+          age_ratings: age_ratings.value,
+          category: category.value,
+          cover: cover.value,
+          first_release_date: first_release_date.value,
+          involved_companies: involved_companies.value,
+          keywords: keywords.value,
+          multiplayer_modes: multiplayer_modes.value,
+          platforms: platforms.value,
+          rating: rating.value,
+          screenshots: screenshots.value,
+          summary: summary.value,
+          url: url.value,
+          videos: videos.value,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: user.token,
+        },
+      };
 
-
-}
+      const response = await fetch("/api/jeu", options);
+      if (!response.ok) {
+        throw new Error(
+          "fetch error : " + response.status + " : " + response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("addpage::error: ", error);
+    }
+    Redirect("/");
+  });
+};
 export default addpage;

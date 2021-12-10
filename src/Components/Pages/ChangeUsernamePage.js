@@ -22,37 +22,36 @@ const usernamepage = `
     
     </div`;
 
-const usernamePage = () =>{
-    let user = getSessionObject("user");
-    const main = document.querySelector("#main");
-   main.innerHTML = usernamepage;
-   const Form = document.querySelector("form");
-   const username = document.querySelector("#username");
-   Form.addEventListener("submit" ,async (event)  =>{
+const usernamePage = () => {
+  let user = getSessionObject("user");
+  const main = document.querySelector("#main");
+  main.innerHTML = usernamepage;
+  const Form = document.querySelector("form");
+  const username = document.querySelector("#username");
+  Form.addEventListener("submit", async (event) => {
     event.preventDefault();
-   try {
-     const options = {
-       method: "PUT",
-       body: JSON.stringify({
-         username: username.value,
-       }), 
-       headers: {
-         "Content-Type": "application/json",
-         Authorization: user.token,
-       },
-     };
- 
-     const response = await fetch(`/api/users/${user.username}`, options);  
- 
-     if (!response.ok) {
-       throw new Error(
-         "fetch error : " + response.status + " : " + response.statusText
-       );
-     }
-   } catch (error) {
-     console.error("changeusername::error: ", error);
-   }
-   Redirect("/login");
+    try {
+      const options = {
+        method: "PUT",
+        body: JSON.stringify({
+          username: username.value,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+
+      const response = await fetch(`/api/users/${user.username}`, options);
+
+      if (!response.ok) {
+        throw new Error(
+          "fetch error : " + response.status + " : " + response.statusText
+        );
+      }
+    } catch (error) {
+      console.error("changeusername::error: ", error);
+    }
+    Redirect("/login");
   });
-}
+};
 export default usernamePage;

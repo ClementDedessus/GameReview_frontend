@@ -35,43 +35,39 @@ const registerpage = `
     
     </div>`;
 function RegisterPage() {
-
   const main = document.querySelector("#main");
   main.innerHTML = registerpage;
   const Form = document.querySelector("form");
   const username = document.querySelector("#username");
   const password = document.querySelector("#password");
- Form.addEventListener("submit", async (event) =>{
-  try {
-    const options = {
-      method: "POST", 
-      body: JSON.stringify({
-        username: username.value,
-        password: password.value,
-      }), 
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
+  Form.addEventListener("submit", async (event) => {
+    try {
+      const options = {
+        method: "POST",
+        body: JSON.stringify({
+          username: username.value,
+          password: password.value,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
 
-    const response = fetch("/api/auths/register", options); 
+      const response = fetch("/api/auths/register", options);
 
-    if (!response.ok) {
-      throw new Error(
-        "fetch error : " + response.status + " : " + response.statusText
-      );
+      if (!response.ok) {
+        throw new Error(
+          "fetch error : " + response.status + " : " + response.statusText
+        );
+      }
+      const user = await response.json();
+      setSessionObject("user", user);
+      Navbar({ isAuthenticated: true });
+      Redirect("/");
+    } catch (error) {
+      console.error("RegisterPage::error: ", error);
     }
-    const user = await response.json(); 
-    setSessionObject("user", user);
-    Navbar({ isAuthenticated: true });
-    Redirect("/");
-  } catch (error) {
-    console.error("RegisterPage::error: ", error);
-  }
- });
+  });
 }
 
 export default RegisterPage;
-
-
-
