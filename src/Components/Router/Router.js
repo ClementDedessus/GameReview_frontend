@@ -8,6 +8,11 @@ import passpage from "../Pages/ChangePasswordPage";
 import battlefield from "../Pages/BattlefieldPage";
 import addpage from "../Pages/AddjeuPage";
 import newworldpage from "../Pages/NewWorldPage";
+import forza from "../Pages/ForzaPage";
+import itTakesTwo from "../Pages/ItTakesTwo";
+import nieRReplicant from "../Pages/NieRReplicantPage";
+import gtapage from "../Pages/GtaPage";
+import videopage from "../Pages/VideoPage";
 const routes = {
   "/": HomePage,
   "/login": LoginPage,
@@ -19,6 +24,11 @@ const routes = {
   "/pageBattlefield": battlefield,
   "/add": addpage,
   "/pageNewWorld": newworldpage,
+  "/forza": forza,
+  "/ItTakesTwo":itTakesTwo,
+  "/NieRReplicant":nieRReplicant,
+  "/gta":gtapage,
+  "/video":videopage
 };
 
 const Router = () => {

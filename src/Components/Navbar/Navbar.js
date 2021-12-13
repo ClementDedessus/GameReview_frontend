@@ -64,6 +64,9 @@ const Navbar = () => {
               <li class="nav-item">
               <a class="nav-link " href="#" data-uri="/add">Add game</a>
             </li> 
+            <li class="nav-item">
+              <a class="nav-link " href="#" data-uri="/video">Videos & clips</a>
+            </li> 
               <li class="nav-item">
                 <a class="nav-item nav-link " id = "profil" href="#" data-uri="/profil" >${user.username}</a>
               </li>    
@@ -78,7 +81,20 @@ const Navbar = () => {
           </li>     
           <li class="nav-item">
             <a class="nav-link disabled" href="#" data-uri="/pageNewWorld"></a>
-          </li>               
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" data-uri="/forza"></a>
+          </li>  
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" data-uri="/ItTakesTwo"></a>
+          </li>    
+          <li class="nav-item">
+          <a class="nav-link disabled" href="#" data-uri="/NieRReplicant"></a>
+        </li>  
+         </li>    
+        <li class="nav-item">
+        <a class="nav-link disabled" href="#" data-uri="/gta"></a>
+      </li>        
             </ul>
           </div>
         </div>

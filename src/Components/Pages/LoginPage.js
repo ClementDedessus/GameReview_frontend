@@ -34,7 +34,7 @@ const loginpage = `
     <div id="r"></div>
     
     </div`;
-function LoginPage() {
+ function LoginPage() {
   const main = document.querySelector("#main");
   main.innerHTML = loginpage;
   const Form = document.querySelector("form");

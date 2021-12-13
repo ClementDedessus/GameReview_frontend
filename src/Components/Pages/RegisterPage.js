@@ -34,7 +34,7 @@ const registerpage = `
     <div id="r"></div>
     
     </div>`;
-function RegisterPage() {
+ function  RegisterPage () {
   const main = document.querySelector("#main");
   main.innerHTML = registerpage;
   const Form = document.querySelector("form");
@@ -53,7 +53,7 @@ function RegisterPage() {
         },
       };
 
-      const response = fetch("/api/auths/register", options);
+      const response = await fetch("/api/auths/register", options);
 
       if (!response.ok) {
         throw new Error(

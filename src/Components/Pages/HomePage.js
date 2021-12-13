@@ -37,6 +37,18 @@ const HomePage = async () => {
         if (jeu.name === "New World") {
           window.location = "/pageNewWorld";
         }
+        if(jeu.name === "Forza Horizon 5"){
+          window;location = "/forza"
+        }
+        if(jeu.name === "It Takes Two"){
+          window.location = "/ItTakesTwo"
+        }
+        if(jeu.name === "NieR Replicant"){
+          window.location = "/NieRReplicant"
+        }
+        if(jeu.name === "Gta"){
+          window.location = "gta"
+        }
       });
     });
   } catch (error) {
