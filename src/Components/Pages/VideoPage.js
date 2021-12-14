@@ -1,3 +1,4 @@
+import { getSessionObject } from "../utils/session";
 const video = ` <div class="text-center">
 <form class="px-5">
 
@@ -8,6 +9,7 @@ const video = ` <div class="text-center">
 </div`;
 
 const videopage = async() =>{
+  let user = getSessionObject("user");
     const main = document.querySelector("#main");
     main.innerHTML = video;
     const Form = document.querySelector("form");
@@ -22,11 +24,7 @@ const videopage = async() =>{
         }
         const videos = await response.json();
         videos.forEach((video)=>{
-            const div = document.createElement("div");
-            const vid = document.createElement("video");
-            div.appendChild(vid);
-            main.appendChild(div);
-            vid.src=video.video;
+         
         })
       } catch (error) {
         console.error("battlefielpage::error: ", error);
@@ -40,6 +38,7 @@ const videopage = async() =>{
               method: "POST",
               body: JSON.stringify({
                 video: file.value,
+                expediteur: user.username,
               }),
               headers: {
                 "Content-Type": "application/json",

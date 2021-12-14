@@ -1,4 +1,4 @@
-import newworldpage from "./NewWorldPage";
+import { Redirect } from "../Router/Router";
 const page = `<nav class="navbar navbar-light bg-light">
 <div class="right">
   <form id ="form" class="d-flex">
@@ -31,24 +31,8 @@ const HomePage = async () => {
       img.width = 300;
       img.height = 200;
       img.addEventListener("click", (event) => {
-        if (jeu.name === "Battlefield 2042") {
-          window.location = "/pageBattlefield";
-        }
-        if (jeu.name === "New World") {
-          window.location = "/pageNewWorld";
-        }
-        if(jeu.name === "Forza Horizon 5"){
-          window;location = "/forza"
-        }
-        if(jeu.name === "It Takes Two"){
-          window.location = "/ItTakesTwo"
-        }
-        if(jeu.name === "NieR Replicant"){
-          window.location = "/NieRReplicant"
-        }
-        if(jeu.name === "Gta"){
-          window.location = "gta"
-        }
+        sessionStorage.setItem('clé', jeu.name);
+        Redirect("/jeu")
       });
     });
   } catch (error) {

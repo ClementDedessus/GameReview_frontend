@@ -5,14 +5,9 @@ import LogoutPage from "../Pages/LogoutPage";
 import ProfilPage from "../Pages/ProfilPage";
 import usernamePage from "../Pages/ChangeUsernamePage";
 import passpage from "../Pages/ChangePasswordPage";
-import battlefield from "../Pages/BattlefieldPage";
 import addpage from "../Pages/AddjeuPage";
-import newworldpage from "../Pages/NewWorldPage";
-import forza from "../Pages/ForzaPage";
-import itTakesTwo from "../Pages/ItTakesTwo";
-import nieRReplicant from "../Pages/NieRReplicantPage";
-import gtapage from "../Pages/GtaPage";
 import videopage from "../Pages/VideoPage";
+import jeupage from "../Pages/JeuPage";
 const routes = {
   "/": HomePage,
   "/login": LoginPage,
@@ -21,14 +16,9 @@ const routes = {
   "/profil": ProfilPage,
   "/changeusername": usernamePage,
   "/changepassword": passpage,
-  "/pageBattlefield": battlefield,
   "/add": addpage,
-  "/pageNewWorld": newworldpage,
-  "/forza": forza,
-  "/ItTakesTwo":itTakesTwo,
-  "/NieRReplicant":nieRReplicant,
-  "/gta":gtapage,
-  "/video":videopage
+  "/video":videopage,
+  "/jeu":jeupage
 };
 
 const Router = () => {

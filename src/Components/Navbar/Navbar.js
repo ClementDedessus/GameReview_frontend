@@ -7,12 +7,12 @@ const Navbar = () => {
   let user = getSessionObject("user");
   if (!user) {
     navbar = `
-  <nav class="navbar navbar-expand-lg navbar-blue bg-white">
+  <nav class="navbar navbar-expand-lg navbar-red bg-red">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">GameReviews</a>
+          <a class="navbar-brand" href="#" data-uri="/">GameReviews</a>
           <button
             class="navbar-toggler"
-            type="button"
+            type=""
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
@@ -75,26 +75,10 @@ const Navbar = () => {
             </li> 
             <li class="nav-item">
               <a class="nav-link disabled" href="#" data-uri="/changepassword"></a>
-            </li>     
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#" data-uri="/pageBattlefield"></a>
-          </li>     
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" data-uri="/pageNewWorld"></a>
-          </li>  
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" data-uri="/forza"></a>
-          </li>  
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" data-uri="/ItTakesTwo"></a>
-          </li>    
-          <li class="nav-item">
-          <a class="nav-link disabled" href="#" data-uri="/NieRReplicant"></a>
-        </li>  
-         </li>    
-        <li class="nav-item">
-        <a class="nav-link disabled" href="#" data-uri="/gta"></a>
-      </li>        
+            </li>       
+      <li class="nav-item">
+      <a class="nav-link disabled" href="#" data-uri="/jeu"></a>
+    </li>      
             </ul>
           </div>
         </div>
