@@ -2,24 +2,6 @@ import { Navbar as BootstrapNavbar } from "bootstrap";
 import { getSessionObject } from "../utils/session";
 
 const Navbar = () => {
-<<<<<<< HEAD
-  const navItems = document.querySelectorAll(".nav-link");
-
-  navItems.forEach((items) => {
-    items.addEventListener("click", (e) => {
-      e.preventDefault();
-      console.log(`click on ${e.target.innerHTML} navbar item`);
-
-      if (e.target.innerHTML === "Accueil") {
-        HomePage();
-      }
-      
-    })
-  });
-
-  
-
-=======
   const navbarWrapper = document.querySelector("#navbarWrapper");
   let navbar;
   let user = getSessionObject("user");
@@ -103,7 +85,6 @@ const Navbar = () => {
       </nav>`;
   }
   navbarWrapper.innerHTML = navbar;
->>>>>>> eb7764370e2b9919f08c0fae1400c70d113af4c5
 };
 
 export default Navbar;
