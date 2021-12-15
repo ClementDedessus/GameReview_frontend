@@ -56,29 +56,32 @@ const Navbar = () => {
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-              <a class="nav-link" href="#" data-uri="/">Home</a>
-              </li>  
+                <a class="nav-link" href="#" data-uri="/">Home</a>
+              </li>     
               <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/logout">Logout</a>
-              </li>    
+                <a class="nav-link " href="#" data-uri="/add">Add game</a>
+              </li> 
               <li class="nav-item">
-              <a class="nav-link " href="#" data-uri="/add">Add game</a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link " href="#" data-uri="/video">Videos & clips</a>
-            </li> 
+                <a class="nav-link " href="#" data-uri="/video">Videos & clips</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-uri="/classement">Classement</a>
+              </li>   
               <li class="nav-item">
                 <a class="nav-item nav-link " id = "profil" href="#" data-uri="/profil" >${user.username}</a>
               </li>    
               <li class="nav-item">
-              <a class="nav-link disabled" href="#" data-uri="/changeusername"></a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" data-uri="/changepassword"></a>
-            </li>       
-      <li class="nav-item">
-      <a class="nav-link disabled" href="#" data-uri="/jeu"></a>
-    </li>      
+                <a class="nav-link" href="#" data-uri="/logout">Logout</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" data-uri="/changeusername"></a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" data-uri="/changepassword"></a>
+              </li>       
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" data-uri="/jeu"></a>
+              </li>      
             </ul>
           </div>
         </div>

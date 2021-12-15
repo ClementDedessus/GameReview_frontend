@@ -1,5 +1,7 @@
 import { getSessionObject } from "../utils/session";
 import { Redirect } from "../Router/Router";
+import Navbar from "../Navbar/Navbar";
+import { removeSessionObject } from "../utils/session";
 const passwordpage = `
 
     <div class="text-center">
@@ -52,6 +54,8 @@ const passpage = () => {
     } catch (error) {
       console.error("changeusername::error: ", error);
     }
+    removeSessionObject("user");
+    Navbar();
     Redirect("/login");
   });
 };

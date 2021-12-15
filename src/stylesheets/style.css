@@ -1,0 +1,23 @@
+
+main p {
+   text-align: left ;
+}
+main .image{
+    float: left;
+}
+main h3{
+    padding-bottom: 3%;
+}
+main .message{
+    float: right;
+}
+
+main table{
+   margin-left: 1%;
+   margin-bottom: 3%;
+   border-spacing: 20%;
+}
+
+main .p-3{
+    display: inline-block;
+}

@@ -1,5 +1,7 @@
 import { getSessionObject } from "../utils/session";
 import { Redirect } from "../Router/Router";
+import Navbar from "../Navbar/Navbar";
+import { removeSessionObject } from "../utils/session";
 const usernamepage = `
     <div class="text-center">
       <h3>Change username</h3>
@@ -51,6 +53,8 @@ const usernamePage = () => {
     } catch (error) {
       console.error("changeusername::error: ", error);
     }
+    removeSessionObject("user");
+    Navbar();
     Redirect("/login");
   });
 };

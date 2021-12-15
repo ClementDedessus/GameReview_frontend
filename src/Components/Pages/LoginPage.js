@@ -7,7 +7,7 @@ const loginpage = `
 
     
     <form class="px-5">
-    <div class="mb-3">
+    <div class=" mb-3">
       <label for="<username">Username</label>
       <input
         type="text"
@@ -34,7 +34,7 @@ const loginpage = `
     <div id="r"></div>
     
     </div`;
- function LoginPage() {
+function LoginPage() {
   const main = document.querySelector("#main");
   main.innerHTML = loginpage;
   const Form = document.querySelector("form");
@@ -63,16 +63,11 @@ const loginpage = `
       }
       const user = await response.json();
       setSessionObject("user", user);
-      Navbar({ isAuthenticated: true });
+      Navbar({ isAuthenticated: false });
       Redirect("/");
     } catch (error) {
       console.error("LoginPage::error: ", error);
     }
-    /*
-  setTimeout(() => {
-    window.location.reload();;
-   },  3000);
-   */
   });
 }
 

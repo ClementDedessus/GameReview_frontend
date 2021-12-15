@@ -1,4 +1,5 @@
 import { getSessionObject } from "../utils/session";
+import { Redirect } from "../Router/Router";
 
 const formaddpage = `<div class="text-center">
 
@@ -221,7 +222,7 @@ const addpage = async () => {
     } catch (error) {
       console.error("addpage::error: ", error);
     }
-    Redirect("/");
+    Redirect("/login");
   });
 };
 export default addpage;

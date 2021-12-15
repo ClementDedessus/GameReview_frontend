@@ -8,6 +8,7 @@ import passpage from "../Pages/ChangePasswordPage";
 import addpage from "../Pages/AddjeuPage";
 import videopage from "../Pages/VideoPage";
 import jeupage from "../Pages/JeuPage";
+import classement from "../Pages/ClassementPage";
 const routes = {
   "/": HomePage,
   "/login": LoginPage,
@@ -18,7 +19,8 @@ const routes = {
   "/changepassword": passpage,
   "/add": addpage,
   "/video":videopage,
-  "/jeu":jeupage
+  "/jeu":jeupage,
+  "/classement":classement
 };
 
 const Router = () => {

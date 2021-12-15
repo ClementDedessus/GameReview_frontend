@@ -34,7 +34,7 @@ const registerpage = `
     <div id="r"></div>
     
     </div>`;
- function  RegisterPage () {
+function RegisterPage() {
   const main = document.querySelector("#main");
   main.innerHTML = registerpage;
   const Form = document.querySelector("form");
