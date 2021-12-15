@@ -60,8 +60,29 @@ const jeupage = async () =>{
       img.className = "container";
       img.className = "p-3";
       img.src = jeux.cover;
+      img.height = 300;
       img.width = 300;
-      img.height = 200;
+      
+      //animation image 
+      $(document).ready(function(){
+
+        $("img").mouseover(function(){
+           $(this).animate({
+                              height:'500px',
+                              width:'500px',
+                              left : '+11px'
+                            })
+                                    });
+        
+        $("img").mouseout(function(){
+           $(this).animate({
+                              height:'200px',
+                              width:'200px',
+                              left : '0px'
+                            })
+                                    });
+        
+        });
       main.innerHTML = `${jeux.name},
               ${jeux.age_ratings},
               ${jeux.category},
@@ -72,8 +93,11 @@ const jeupage = async () =>{
               ${jeux.platforms},
               ${jeux.rating},
               ${jeux.summary},
-              ${jeux.url}`;
-              main.appendChild(img);
+              `;
+              
+              main2.appendChild(img);
+              main2.setAttribute("style", "text-align:center");
+
     } catch (error) {
       console.error("battlefielpage::error: ", error);
     }
