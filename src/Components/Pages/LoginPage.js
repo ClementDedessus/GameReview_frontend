@@ -35,6 +35,7 @@ const loginpage = `
     
     </div`;
 function LoginPage() {
+  const erreur = document.createElement("h4");
   const main = document.querySelector("#main");
   main.innerHTML = loginpage;
   const Form = document.querySelector("form");
@@ -67,11 +68,11 @@ function LoginPage() {
       Redirect("/");
     } catch (error) {
       console.error("LoginPage::error: ", error);
-      const erreur = document.createElement("h4");
       main.appendChild(erreur);
-      erreur.innerHTML = "Error, the given password and username doesn't match";
     }
   });
+  erreur.innerHTML = "Error, the given password and username doesn't match";
+
 }
 
 export default LoginPage;
