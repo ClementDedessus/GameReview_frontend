@@ -29,7 +29,7 @@ const loginpage = `
         
       />
     </div>
-    <button type="submit" class="btn btn-primary" id="btn1">Save</button>
+    <button type="submit" class="btn btn-primary" id="btn1">Connect</button>
     </form>
     <div id="r"></div>
     
@@ -67,6 +67,9 @@ function LoginPage() {
       Redirect("/");
     } catch (error) {
       console.error("LoginPage::error: ", error);
+      const erreur = document.createElement("h4");
+      main.appendChild(erreur);
+      erreur.innerHTML = "Error, the given password and username doesn't match";
     }
   });
 }
