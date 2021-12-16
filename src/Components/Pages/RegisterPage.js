@@ -29,7 +29,7 @@ const registerpage = `
         
       />
     </div>
-    <button type="submit" class="btn btn-primary" id="btn1">Save</button>
+    <button type="submit" class="btn btn-primary" id="btn1">Register</button>
     </form>
     <div id="r"></div>
     
@@ -40,7 +40,8 @@ function RegisterPage() {
   const Form = document.querySelector("form");
   const username = document.querySelector("#username");
   const password = document.querySelector("#password");
-  Form.addEventListener("submit", async (event) => {
+  Form.addEventListener("submit", async (event) => { 
+    event.preventDefault();
     try {
       const options = {
         method: "POST",
@@ -62,8 +63,7 @@ function RegisterPage() {
       }
       const user = await response.json();
       setSessionObject("user", user);
-      Navbar({ isAuthenticated: true });
-      Redirect("/");
+      Redirect("/login");
     } catch (error) {
       console.error("RegisterPage::error: ", error);
     }
