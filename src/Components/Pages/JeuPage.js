@@ -59,7 +59,7 @@ const jeupage = async () => {
 
   const title = `<h3 class="text-center">${nomjeu}</3>`;
   const text = document.createElement("p");
-  main.innerHTML = title;
+  
 
   try {
     const response = await fetch(`/api/jeu?age=${nomjeu}`);
@@ -92,21 +92,46 @@ const jeupage = async () => {
         });
       });
     });
-    text.innerHTML = `Name : ${jeux.name}
-      <br> Age ratings : ${jeux.age_ratings}
-      <br> Category : ${jeux.category}
-      <br> Relaese date : ${jeux.first_release_date}
-      <br> Companies : ${jeux.involved_companies}
-      <br> Keyword : ${jeux.keywords}
-      <br> Multiplayer modes : ${jeux.multiplayer_modes}
-      <br> Platforms : ${jeux.platforms}
-      <br> Rating : ${jeux.rating}
-      <br> Summary : ${jeux.summary}
-      <br> Site : ${jeux.url}
-      ${choix}`;
+    main.innerHTML = `<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col"> <h2 class="text-center"> ${jeux.name} </h2> </th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+      <td class="text-center"><p> Age minimal joueur : ${jeux.age_ratings} </p></td>
+       </tr>
+      <tr>
+      <td class="text-center"><p> Category : ${jeux.category} </p></td> 
+      </tr>
+      <tr>
+      <td class="text-center"><p> Date de sortie : ${jeux.first_release_date} </p></td> 
+      </tr>
+      <tr>
+      <td class="text-center"><p> Studio de developpment : ${jeux.involved_companies} </p></td> 
+      </tr>
+      <tr>
+      <td class="text-center"><p> Multijoueurs: ${jeux.multiplayer_modes} </p></td> 
+      </tr>
+      <tr>
+      <td class="text-center"><p> Plateformes : ${jeux.platforms} </p></td> 
+      </tr>
+      <tr>
+      <td class="text-center"><p> Note : ${jeux.rating} </p></td> 
+      </tr>
+      <tr>
+      <td class="text-center"><p> Resume : ${jeux.summary}  </p></td> 
+      </tr>
+      <tr>
+      <td class="text-center"><p>${choix} </p></td> 
+      </tr>
+    </tbody>
+  </table>`
+    
 
     main.appendChild(img);
-    main.appendChild(text);
   } catch (error) {
     console.error("jeupage::error: ", error);
   }
