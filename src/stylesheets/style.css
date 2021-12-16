@@ -1,11 +1,4 @@
-
-main p {
-   text-align: left ;
-}
-main .image{
-    float: left;
-}
-main h3{
+mian h3{
     padding-bottom: 3%;
 }
 main .message{
@@ -20,4 +13,12 @@ main table{
 
 main .p-3{
     display: inline-block;
+}
+
+main{
+    text-align: center  ;
+}
+
+.tableReco{
+    margin: auto;
 }

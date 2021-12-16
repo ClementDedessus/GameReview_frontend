@@ -16,6 +16,7 @@ const HomePage = async () => {
   main.innerHTML = page;
   const searchBare = document.querySelector("#search");
   const table = document.createElement("table");
+  table.className = "tableReco";
 
   try {
     const response = await fetch(`/api/liked/${user.username}`);
@@ -43,39 +44,43 @@ const HomePage = async () => {
   } catch (error) {
     console.error("battlefielpage::error: ", error);
   }
+  if (user) {
+    try {
+      const response = await fetch(`/api/jeu/recommandations/${categor}`);
+      if (!response.ok) {
+        throw new Error(
+          "fetch error : " + response.status + " : " + response.statusText
+        );
+      }
+      const jeux = await response.json();
+      const titre = document.createElement("h4");
+      main.appendChild(titre);
+      titre.innerHTML = "Recommandations";
+      jeux.forEach((jeu) => {
+        const ligne = document.createElement("td");
+        const img = document.createElement("img");
+        ligne.appendChild(img);
+        table.appendChild(ligne);
+        main.appendChild(table);
 
-  try {
-    const response = await fetch(`/api/jeu/recommandations/${categor}`);
-    if (!response.ok) {
-      throw new Error(
-        "fetch error : " + response.status + " : " + response.statusText
-      );
-    }
-    const jeux = await response.json();
-    const titre = document.createElement("h4");
-    main.appendChild(titre);
-    titre.innerHTML = "Recommandations";
-    jeux.forEach((jeu) => {
-      const ligne = document.createElement("td");
-      const img = document.createElement("img");
-      ligne.appendChild(img);
-      table.appendChild(ligne);
-      main.appendChild(table);
-
-      ligne.className = "rcommandation";
-      img.src = jeu.cover;
-      img.width = 300;
-      img.height = 200;
-      img.addEventListener("click", (event) => {
-        sessionStorage.setItem("clé", jeu.name);
-        Redirect("/jeu");
+        ligne.className = "rcommandation";
+        img.src = jeu.cover;
+        img.width = 300;
+        img.height = 200;
+        img.addEventListener("click", (event) => {
+          sessionStorage.setItem("clé", jeu.name);
+          Redirect("/jeu");
+        });
       });
-    });
-  } catch (error) {
-    console.error("Homepage::error: ", error);
+    } catch (error) {
+      console.error("Homepage::error: ", error);
+    }
   }
 
   try {
+    const titre2 = document.createElement("h4");
+    main.appendChild(titre2);
+    titre2.innerHTML = "All games";
     const response = await fetch(`/api/jeu?age=${searchBare.value}`);
     // search barre a faire !!!!!!!!!
     if (!response.ok) {
