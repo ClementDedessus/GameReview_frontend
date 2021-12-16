@@ -29,18 +29,20 @@ const registerpage = `
         
       />
     </div>
-    <button type="submit" class="btn btn-primary" id="btn1">Save</button>
+    <button type="submit" class="btn btn-primary" id="btn1">Register</button>
     </form>
     <div id="r"></div>
     
     </div>`;
 function RegisterPage() {
+  const erreur = document.createElement("h4");
   const main = document.querySelector("#main");
   main.innerHTML = registerpage;
   const Form = document.querySelector("form");
   const username = document.querySelector("#username");
   const password = document.querySelector("#password");
-  Form.addEventListener("submit", async (event) => {
+  Form.addEventListener("submit", async (event) => { 
+    event.preventDefault();
     try {
       const options = {
         method: "POST",
@@ -59,15 +61,14 @@ function RegisterPage() {
         throw new Error(
           "fetch error : " + response.status + " : " + response.statusText
         );
-      }
-      const user = await response.json();
-      setSessionObject("user", user);
-      Navbar({ isAuthenticated: true });
-      Redirect("/");
+      }      
+      Redirect("/login");
     } catch (error) {
+      main.appendChild(erreur);
       console.error("RegisterPage::error: ", error);
     }
   });
+  erreur.innerHTML = "Error, password and username can't be empty";
 }
 
 export default RegisterPage;
