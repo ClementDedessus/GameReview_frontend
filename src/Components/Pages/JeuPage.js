@@ -68,35 +68,67 @@ const jeupage = async () =>{
 
         $("img").mouseover(function(){
            $(this).animate({
-                              height:'500px',
-                              width:'500px',
-                              left : '+11px'
-                            })
-                                    });
+              height:'500px',
+               width:'500px',
+               left : '+11px'
+           })
+         });
         
         $("img").mouseout(function(){
            $(this).animate({
-                              height:'200px',
-                              width:'200px',
-                              left : '0px'
-                            })
-                                    });
+             height:'200px',
+             width:'200px',
+             left : '0px'
+           })
+        });
+        // clear le main 2  pcq l image se rajoute partout apres 
+        $("img").click(function(){
+           $(this).stop();
+         });                            
         
         });
-      main.innerHTML = `${jeux.name},
-              ${jeux.age_ratings},
-              ${jeux.category},
-              ${jeux.first_release_date},
-              ${jeux.involved_companies},
-              ${jeux.keywords},
-              ${jeux.multiplayer_modes},
-              ${jeux.platforms},
-              ${jeux.rating},
-              ${jeux.summary},
-              `;
+      
+   
+    
+      main.innerHTML = `<table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col"> <h2 class="text-center"> ${jeux.name} </h2> </th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+        <td class="text-center"><p> Age minimal joueur : ${jeux.age_ratings} </p></td>
+         </tr>
+        <tr>
+        <td class="text-center"><p> Category : ${jeux.category} </p></td> 
+        </tr>
+        <tr>
+        <td class="text-center"><p> Date de sortie : ${jeux.first_release_date} </p></td> 
+        </tr>
+        <tr>
+        <td class="text-center"><p> Studio de developpment : ${jeux.involved_companies} </p></td> 
+        </tr>
+        <tr>
+        <td class="text-center"><p> Multijoueurs: ${jeux.multiplayer_modes} </p></td> 
+        </tr>
+        <tr>
+        <td class="text-center"><p> Plateformes : ${jeux.platforms} </p></td> 
+        </tr>
+        <tr>
+        <td class="text-center"><p> Note : ${jeux.rating} </p></td> 
+        </tr>
+        <tr>
+        <td class="text-center"><p> Resume : ${jeux.summary}  </p></td> 
+        </tr>
+      </tbody>
+    </table>`
+      main.appendChild(img);
+      main.setAttribute("style", "text-align:center");
+
               
-              main2.appendChild(img);
-              main2.setAttribute("style", "text-align:center");
+             
 
     } catch (error) {
       console.error("battlefielpage::error: ", error);

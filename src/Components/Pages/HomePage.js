@@ -7,6 +7,7 @@ const page = `<nav class="navbar navbar-light bg-light">
   </form>
 </div>
 </nav>`;
+$("#main2").empty();
 const HomePage = async () => {
   const main = document.querySelector("#main");
   main.innerHTML = page;
