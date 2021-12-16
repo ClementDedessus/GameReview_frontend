@@ -120,9 +120,6 @@ const jeupage = async () => {
       <td class="text-center"><p> Plateformes : ${jeux.platforms} </p></td> 
       </tr>
       <tr>
-      <td class="text-center"><p> Note : ${jeux.rating} </p></td> 
-      </tr>
-      <tr>
       <td class="text-center"><p> Resume : ${jeux.summary}  </p></td> 
       </tr>
       <tr>
@@ -135,7 +132,7 @@ const jeupage = async () => {
   
   main.appendChild(evaluation);
   main.appendChild(envoyer);
-  
+
   main.appendChild(img);
 } catch (error) {
   console.error("jeupage::error: ", error);
