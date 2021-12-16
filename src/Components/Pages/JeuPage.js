@@ -52,6 +52,7 @@ const com = ` <div class="message">
 const jeupage = async () => {
   let nomjeu = sessionStorage.getItem("clé");
   const envoyer = document.createElement("button");
+  envoyer.className = "voter";
   const evaluation = document.createElement("div");
   let user = getSessionObject("user");
   const commentaire = document.createElement("div");
@@ -131,12 +132,14 @@ const jeupage = async () => {
   </table>`
     
 
-    main.appendChild(img);
-  } catch (error) {
-    console.error("jeupage::error: ", error);
-  }
+  
   main.appendChild(evaluation);
   main.appendChild(envoyer);
+  
+  main.appendChild(img);
+} catch (error) {
+  console.error("jeupage::error: ", error);
+}
   envoyer.innerHTML = "Voter";
   //evaluation.innerHTML=choix
   envoyer.addEventListener("click", async (event) => {
@@ -154,6 +157,8 @@ const jeupage = async () => {
             "Content-Type": "application/json",
           },
         };
+
+        
 
         const response = await fetch("/api/liked", options);
 
