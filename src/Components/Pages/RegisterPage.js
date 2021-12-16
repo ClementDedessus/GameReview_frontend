@@ -41,6 +41,7 @@ function RegisterPage() {
   const username = document.querySelector("#username");
   const password = document.querySelector("#password");
   Form.addEventListener("submit", async (event) => {
+    event.preventDefault()
     try {
       const options = {
         method: "POST",
@@ -62,8 +63,7 @@ function RegisterPage() {
       }
       const user = await response.json();
       setSessionObject("user", user);
-      Navbar({ isAuthenticated: true });
-      Redirect("/");
+      Redirect("/login");
     } catch (error) {
       console.error("RegisterPage::error: ", error);
     }

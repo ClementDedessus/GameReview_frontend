@@ -63,7 +63,6 @@ function LoginPage() {
       }
       const user = await response.json();
       setSessionObject("user", user);
-      Navbar({ isAuthenticated: false });
       Redirect("/");
     } catch (error) {
       console.error("LoginPage::error: ", error);

@@ -16,7 +16,7 @@ const HomePage = async () => {
   main.innerHTML = page;
   const searchBare = document.querySelector("#search");
   const table = document.createElement("table");
-
+table.className = "test"
   try {
     const response = await fetch(`/api/liked/${user.username}`);
     if (!response.ok) {
@@ -43,7 +43,7 @@ const HomePage = async () => {
   } catch (error) {
     console.error("battlefielpage::error: ", error);
   }
-
+if(user != null){
   try {
     const response = await fetch(`/api/jeu/recommandations/${categor}`);
     if (!response.ok) {
@@ -53,8 +53,8 @@ const HomePage = async () => {
     }
     const jeux = await response.json();
     const titre = document.createElement("h4");
-    main.appendChild(titre);
     titre.innerHTML = "Recommandations";
+    main.appendChild(titre);
     jeux.forEach((jeu) => {
       const ligne = document.createElement("td");
       const img = document.createElement("img");
@@ -74,8 +74,11 @@ const HomePage = async () => {
   } catch (error) {
     console.error("Homepage::error: ", error);
   }
-
+}
   try {
+    const titre2 = document.createElement("h4");
+    titre2.innerHTML = "All games";
+    main.appendChild(titre2);
     const response = await fetch(`/api/jeu?age=${searchBare.value}`);
     // search barre a faire !!!!!!!!!
     if (!response.ok) {
