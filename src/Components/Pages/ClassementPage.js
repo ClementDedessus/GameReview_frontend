@@ -25,7 +25,7 @@ const classement = async () => {
 
     if (!response.ok) {
       throw new Error(
-        "fetch error : " + response.status + " : " + response.statusText
+        "fetch error : " + response.status + " : " + response.statusText
       );
     }
     const jeux = await response.json();
