@@ -7,7 +7,7 @@ const loginpage = `
 
     
     <form class="px-5">
-    <div class="mb-3">
+    <div class=" mb-3">
       <label for="<username">Username</label>
       <input
         type="text"
@@ -29,12 +29,13 @@ const loginpage = `
         
       />
     </div>
-    <button type="submit" class="btn btn-primary" id="btn1">Save</button>
+    <button type="submit" class="btn btn-primary" id="btn1">Connect</button>
     </form>
     <div id="r"></div>
     
     </div`;
 function LoginPage() {
+  const erreur = document.createElement("h4");
   const main = document.querySelector("#main");
   main.innerHTML = loginpage;
   const Form = document.querySelector("form");
@@ -63,17 +64,14 @@ function LoginPage() {
       }
       const user = await response.json();
       setSessionObject("user", user);
-      Navbar({ isAuthenticated: true });
+      Navbar({ isAuthenticated: false });
       Redirect("/");
     } catch (error) {
       console.error("LoginPage::error: ", error);
+      main.appendChild(erreur);
     }
-    /*
-  setTimeout(() => {
-    window.location.reload();;
-   },  3000);
-   */
   });
+  erreur.innerHTML = "Error, the given password and username doesn't match";
 }
 
 export default LoginPage;

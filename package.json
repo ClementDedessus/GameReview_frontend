@@ -24,6 +24,9 @@
   "dependencies": {
     "@popperjs/core": "^2.9.2",
     "bootstrap": "^5.0.1",
+    "dropzone": "^6.0.0-beta.2",
+    "filepond": "^4.30.3",
+    "formidable": "^2.0.1",
     "three": "^0.135.0"
   }
 }

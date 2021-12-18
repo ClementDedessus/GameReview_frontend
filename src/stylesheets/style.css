@@ -1,0 +1,57 @@
+main h3 {
+  padding-bottom: 3%;
+}
+main .message {
+  float: right;
+}
+
+main table {
+  margin-left: 1%;
+  margin-bottom: 3%;
+  border-spacing: 20%;
+}
+
+main .p-3 {
+  display: inline-block;
+}
+
+main {
+  text-align: center;
+}
+
+.tableReco {
+  margin: auto;
+}
+
+.voter {
+  display: block;
+  margin: auto;
+}
+
+.class {
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.class1 {
+  display: block;
+}
+
+.btn-close {
+  display: inline-block;
+  padding-top: 15%;
+  padding-right: 5px;
+}
+
+.title {
+  height: 0%;
+}
+.rcommandation {
+  padding-bottom: 5%;
+}
+.text-left{
+    text-align: left;
+}

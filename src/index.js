@@ -6,4 +6,4 @@ import { Router } from "./Components/Router/Router";
 
 Navbar();
 
-Router(); 
+Router();

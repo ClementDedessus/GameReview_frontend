@@ -7,12 +7,12 @@ const Navbar = () => {
   let user = getSessionObject("user");
   if (!user) {
     navbar = `
-  <nav class="navbar navbar-expand-lg navbar-blue bg-white">
+  <nav class="navbar navbar-expand-lg navbar-blue bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">GameReviews</a>
+          <a class="navbar-brand" href="#" data-uri="/">GameReviews</a>
           <button
             class="navbar-toggler"
-            type="button"
+            type=""
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent"
@@ -23,9 +23,6 @@ const Navbar = () => {
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-              <a class="nav-link" href="#" data-uri="/">Home</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" href="#" data-uri="/login">Login</a>
               </li>   
@@ -39,11 +36,11 @@ const Navbar = () => {
   `;
   } else {
     navbar = `
-  <nav class="navbar navbar-expand-lg navbar-blue bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">GameReviews</a>
+    <nav class="navbar navbar-expand-lg navbar-primary ">
+        <div class="container-fluid ">
+          <a class="navbar-brand" href="#" data-uri="/">GameReviews</a>
           <button
-            class="navbar-toggler"
+            class="navbar-toggler "
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -51,34 +48,37 @@ const Navbar = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon btn btn-secondary"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">    
               <li class="nav-item">
-              <a class="nav-link" href="#" data-uri="/">Home</a>
-              </li>  
+                <a class="nav-link " href="#" data-uri="/add">Add games</a>
+              </li> 
               <li class="nav-item">
-                <a class="nav-link" href="#" data-uri="/logout">Logout</a>
+                <a class="nav-link" href="#" data-uri="/update">Update games</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-uri="/classement">Classement</a>
               </li>    
-              <li class="nav-item">
-              <a class="nav-link " href="#" data-uri="/add">Add game</a>
-            </li> 
               <li class="nav-item">
                 <a class="nav-item nav-link " id = "profil" href="#" data-uri="/profil" >${user.username}</a>
               </li>    
               <li class="nav-item">
-              <a class="nav-link disabled" href="#" data-uri="/changeusername"></a>
-            </li> 
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" data-uri="/changepassword"></a>
-            </li>     
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#" data-uri="/pageBattlefield"></a>
-          </li>     
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" data-uri="/pageNewWorld"></a>
-          </li>               
+                <a class="nav-link" href="#" data-uri="/logout">Logout</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" data-uri="/changeusername"></a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" data-uri="/changepassword"></a>
+              </li>       
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" data-uri="/jeu"></a>
+              </li>  
+              <li class="nav-item">
+                <a class="nav-link disabled" href="#" data-uri="/modify"></a>
+              </li>     
             </ul>
           </div>
         </div>
