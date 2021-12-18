@@ -1,4 +1,5 @@
 import { getSessionObject } from "../utils/session";
+import { Redirect } from "../Router/Router";
 
 const formaddpage = `<div class="text-center">
 
@@ -72,17 +73,7 @@ const formaddpage = `<div class="text-center">
   
 />
 </div>
-<div class="mb-3">
-<label for="keywords" class="form-label">keywords</label>
-<input
-  type="text"
-  name="keywords"
-  id="keywords"
-  class="form-control"
-  placeholder="Enter keywords"
-  
-/>
-</div>
+
 <div class="mb-3">
 <label for="multiplayer_modes" class="form-label"> multiplayer_modes</label>
 <input
@@ -105,28 +96,7 @@ const formaddpage = `<div class="text-center">
   
 />
 </div>
-<div class="mb-3">
-<label for="rating" class="form-label">rating</label>
-<input
-  type="number"
-  name="rating"
-  id="rating"
-  class="form-control"
-  placeholder="Enter rating"
-  
-/>
-</div>
-<div class="mb-3">
-<label for="screenshots" class="form-label">screenshots</label>
-<input
-  type="text"
-  name="screenshots"
-  id="screenshots"
-  class="form-control"
-  placeholder="Enter screenshots"
-  
-/>
-</div>
+
 <div class="mb-3">
 <label for="summary" class="form-label">summary</label>
 <input
@@ -149,17 +119,7 @@ const formaddpage = `<div class="text-center">
   
 />
 </div>
-<div class="mb-3">
-<label for="videos" class="form-label">videos</label>
-<input
-  type="text"
-  name="videos"
-  id="videos"
-  class="form-control"
-  placeholder="Enter videos"
-  
-/>
-</div>
+
 
 <button type="submit" class="btn btn-primary" id="btn1">Add</button>
 </form>
@@ -177,16 +137,13 @@ const addpage = async () => {
   const cover = document.querySelector("#cover");
   const first_release_date = document.querySelector("#first_release_date");
   const involved_companies = document.querySelector("#involved_companies");
-  const keywords = document.querySelector("#keywords");
   const multiplayer_modes = document.querySelector("#multiplayer_modes");
   const platforms = document.querySelector("#platforms");
-  const rating = document.querySelector("#rating");
-  const screenshots = document.querySelector("#screenshots");
   const summary = document.querySelector("#summary");
   const url = document.querySelector("#url");
-  const videos = document.querySelector("#videos");
 
   Form.addEventListener("submit", async (event) => {
+    event.preventDefault()
     try {
       const options = {
         method: "POST",
@@ -197,14 +154,10 @@ const addpage = async () => {
           cover: cover.value,
           first_release_date: first_release_date.value,
           involved_companies: involved_companies.value,
-          keywords: keywords.value,
           multiplayer_modes: multiplayer_modes.value,
           platforms: platforms.value,
-          rating: rating.value,
-          screenshots: screenshots.value,
           summary: summary.value,
           url: url.value,
-          videos: videos.value,
         }),
         headers: {
           "Content-Type": "application/json",

@@ -1,0 +1,30 @@
+mian h3{
+    padding-bottom: 3%;
+}
+main .message{
+    float: right;
+}
+
+main table{
+   margin-left: 1%;
+   margin-bottom: 3%;
+   border-spacing: 20%;
+}
+
+main .p-3{
+    display: inline-block;
+}
+
+main{
+    text-align: center  ;
+}
+
+.tableReco{
+    margin: auto;
+}
+
+.voter{
+    display: block;
+    margin: auto;
+}
+

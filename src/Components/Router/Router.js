@@ -5,9 +5,10 @@ import LogoutPage from "../Pages/LogoutPage";
 import ProfilPage from "../Pages/ProfilPage";
 import usernamePage from "../Pages/ChangeUsernamePage";
 import passpage from "../Pages/ChangePasswordPage";
-import battlefield from "../Pages/BattlefieldPage";
 import addpage from "../Pages/AddjeuPage";
-import newworldpage from "../Pages/NewWorldPage";
+import videopage from "../Pages/VideoPage";
+import jeupage from "../Pages/JeuPage";
+import classement from "../Pages/ClassementPage";
 const routes = {
   "/": HomePage,
   "/login": LoginPage,
@@ -16,9 +17,10 @@ const routes = {
   "/profil": ProfilPage,
   "/changeusername": usernamePage,
   "/changepassword": passpage,
-  "/pageBattlefield": battlefield,
   "/add": addpage,
-  "/pageNewWorld": newworldpage,
+  "/video":videopage,
+  "/jeu":jeupage,
+  "/classement":classement
 };
 
 const Router = () => {
