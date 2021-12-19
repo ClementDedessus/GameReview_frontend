@@ -143,7 +143,7 @@ const addpage = async () => {
   const url = document.querySelector("#url");
 
   Form.addEventListener("submit", async (event) => {
-    if(user.name==="admin"){
+    
     event.preventDefault();
     try {
       const options = {
@@ -176,10 +176,7 @@ const addpage = async () => {
       console.error("addpage::error: ", error);
     }
     Redirect("/");
-  }else{
-    alert("Vous etes pas autoriser à faire cette action")
-    Redirect("/");
-  }
+  
   });
 };
 export default addpage;
