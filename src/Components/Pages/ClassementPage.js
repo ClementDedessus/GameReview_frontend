@@ -249,6 +249,8 @@ const classement = async () => {
   } catch (error) {
     console.error("classementpage::error: ", error);
   }
+  setInterval(classement,3000);
 };
-
+  
 export default classement;
+  
