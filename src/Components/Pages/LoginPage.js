@@ -72,7 +72,6 @@ function LoginPage() {
     }
   });
   erreur.innerHTML = "Error, the given password and username doesn't match";
-
 }
 
 export default LoginPage;

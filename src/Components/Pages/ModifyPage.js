@@ -1,6 +1,5 @@
-import { getSessionObject } from "../utils/session";
 import { Redirect } from "../Router/Router";
-
+import { getSessionObject } from "../utils/session";
 const formaddpage = `<div class="text-center">
 
 <h3>Add Game</h3>
@@ -121,12 +120,13 @@ const formaddpage = `<div class="text-center">
 </div>
 
 
-<button type="submit" class="btn btn-primary" id="btn1">Add</button>
+<button type="submit" class="btn btn-primary" id="btn1">Save</button>
 </form>
 <div id="r"></div>
 
 </div`;
-const addpage = async () => {
+const modify = async () => {
+  var nomjeu = sessionStorage.getItem("clé");
   let user = getSessionObject("user");
   const main = document.querySelector("#main");
   main.innerHTML = formaddpage;
@@ -142,44 +142,64 @@ const addpage = async () => {
   const summary = document.querySelector("#summary");
   const url = document.querySelector("#url");
 
-  Form.addEventListener("submit", async (event) => {
-    if(user.name==="admin"){
-    event.preventDefault();
-    try {
-      const options = {
-        method: "POST",
-        body: JSON.stringify({
-          name: name.value,
-          age_ratings: age_ratings.value,
-          category: category.value,
-          cover: cover.value,
-          first_release_date: first_release_date.value,
-          involved_companies: involved_companies.value,
-          multiplayer_modes: multiplayer_modes.value,
-          platforms: platforms.value,
-          summary: summary.value,
-          url: url.value,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: user.token,
-        },
-      };
-
-      const response = await fetch("/api/jeu", options);
-      if (!response.ok) {
-        throw new Error(
-          "fetch error : " + response.status + " : " + response.statusText
-        );
-      }
-    } catch (error) {
-      console.error("addpage::error: ", error);
+  try {
+    const response = await fetch(`/api/jeu?name=${nomjeu}`);
+    if (!response.ok) {
+      throw new Error(
+        "fetch error : " + response.status + " : " + response.statusText
+      );
     }
-    Redirect("/");
-  }else{
-    alert("Vous etes pas autoriser à faire cette action")
-    Redirect("/");
+    const jeux = await response.json();
+    name.value = jeux.name;
+    age_ratings.value = jeux.age_ratings;
+    category.value = jeux.category;
+    cover.value = jeux.cover;
+    first_release_date.value = jeux.first_release_date;
+    involved_companies.value = jeux.involved_companies;
+    multiplayer_modes.value = jeux.multiplayer_modes;
+    platforms.value = jeux.platforms;
+    summary.value = jeux.summary;
+    url.value = jeux.url;
+    Form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+if(user.username === "admin"){
+      try {
+        const options = {
+          method: "PUT",
+          body: JSON.stringify({
+            name: name.value,
+            age_ratings: age_ratings.value,
+            category: category.value,
+            cover: cover.value,
+            first_release_date: first_release_date.value,
+            involved_companies: involved_companies.value,
+            multiplayer_modes: multiplayer_modes.value,
+            platforms: platforms.value,
+            summary: summary.value,
+            url: url.value,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        };
+
+        const response = await fetch(`/api/jeu/update/${nomjeu}`, options);
+        if (!response.ok) {
+          throw new Error(
+            "fetch error : " + response.status + " : " + response.statusText
+          );
+        }
+      } catch (error) {
+        console.error("modifypage::error: ", error);
+      }
+      Redirect("/jeu");
+    }else{
+      alert("Vous etes pas autoriser à faire cette action")
+      Redirect("/");
+    }
+    });
+  } catch (error) {
+    console.error("modifypage::error: ", error);
   }
-  });
 };
-export default addpage;
+export default modify;
