@@ -30,7 +30,7 @@ const classement = async () => {
   let tab = [];
   let map = new Map();
   const main = document.querySelector("#main");
-  main.innerHTML = "Classement";
+  main.innerHTML = "";
 
   try {
     const response = await fetch(`/api/jeu`);
@@ -87,6 +87,9 @@ const classement = async () => {
   var jeuClassement3;
 
   try {
+    const titre2 = document.createElement("h4");
+    main.appendChild(titre2);
+    titre2.innerHTML = "Classement";
     const response = await fetch(`/api/jeu`);
 
     if (!response.ok) {

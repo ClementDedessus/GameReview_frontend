@@ -7,7 +7,7 @@ const HomePage = async () => {
  
   var closedbutton;
   const main = document.querySelector("#main");
-  main.innerHTML = "All games";
+  main.innerHTML = "";
   const table = document.createElement("table");
   table.className = "tableReco";
 
@@ -86,6 +86,10 @@ const HomePage = async () => {
   
   }
   try {
+    const titre2 = document.createElement("h4");
+    main.appendChild(titre2);
+    titre2.innerHTML = "All games";
+    titre2.className = "title";
     const response = await fetch(`/api/jeu`);
     if (!response.ok) {
       throw new Error(

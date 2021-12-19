@@ -4,7 +4,7 @@ import { getSessionObject } from "../utils/session";
 const update = async () => {
   let user = getSessionObject();
   const main = document.querySelector("#main");
-  main.innerHTML = "Update";
+  main.innerHTML = "";
   try {
     const titre2 = document.createElement("h4");
     main.appendChild(titre2);
