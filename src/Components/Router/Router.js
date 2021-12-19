@@ -9,7 +9,6 @@ import addpage from "../Pages/AddjeuPage";
 import videopage from "../Pages/VideoPage";
 import jeupage from "../Pages/JeuPage";
 import classement from "../Pages/ClassementPage";
-
 const routes = {
   "/": HomePage,
   "/login": LoginPage,
@@ -19,10 +18,9 @@ const routes = {
   "/changeusername": usernamePage,
   "/changepassword": passpage,
   "/add": addpage,
-  "/video": videopage,
-  "/jeu": jeupage,
-  "/classement": classement,
-  
+  "/video":videopage,
+  "/jeu":jeupage,
+  "/classement":classement
 };
 
 const Router = () => {

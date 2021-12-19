@@ -11,18 +11,18 @@ const page = `<nav class="navbar navbar-light bg-light">
 </nav>`;
 const HomePage = async () => {
   let user = getSessionObject("user");
-  var closedbutton;
+
   const main = document.querySelector("#main");
   main.innerHTML = page;
-  //const searchBare = document.querySelector("#search");
+  const searchBare = document.querySelector("#search");
   const table = document.createElement("table");
   table.className = "tableReco";
-  if (user) {
+
   try {
     const response = await fetch(`/api/liked/${user.username}`);
     if (!response.ok) {
       throw new Error(
-        "fetch error : " + response.status + " : " + response.statusText
+        "fetch error : " + response.status + " : " + response.statusText
       );
     }
     const jeux = await response.json();
@@ -30,26 +30,26 @@ const HomePage = async () => {
     try {
       let hasar = Math.floor(Math.random() * jeux.length);
 
-      const response = await fetch(`/api/jeu?name=${jeux[hasar].jeu}`);
+      const response = await fetch(`/api/jeu?age=${jeux[hasar].jeu}`);
       if (!response.ok) {
         throw new Error(
-          "fetch error : " + response.status + " : " + response.statusText
+          "fetch error : " + response.status + " : " + response.statusText
         );
       }
       const jeux2 = await response.json();
       var categor = jeux2.category;
     } catch (error) {
-      console.error("Homepage::error: ", error);
+      console.error("battlefielpage::error: ", error);
     }
   } catch (error) {
-    console.error("Homepage::error: ", error);
+    console.error("battlefielpage::error: ", error);
   }
-  
+  if (user) {
     try {
       const response = await fetch(`/api/jeu/recommandations/${categor}`);
       if (!response.ok) {
         throw new Error(
-          "fetch error : " + response.status + " : " + response.statusText
+          "fetch error : " + response.status + " : " + response.statusText
         );
       }
       const jeux = await response.json();
@@ -81,55 +81,28 @@ const HomePage = async () => {
     const titre2 = document.createElement("h4");
     main.appendChild(titre2);
     titre2.innerHTML = "All games";
-    titre2.className = "title";
-    const response = await fetch(`/api/jeu`);
+    const response = await fetch(`/api/jeu?age=${searchBare.value}`);
     // search barre a faire !!!!!!!!!
     if (!response.ok) {
       throw new Error(
-        "fetch error : " + response.status + " : " + response.statusText
+        "fetch error : " + response.status + " : " + response.statusText
       );
     }
     const jeux = await response.json();
-    for (let index = 0; index < jeux.length; index++) {
+    jeux.forEach((jeu) => {
       const div = document.createElement("strong");
       const img = document.createElement("img");
-      closedbutton = document.createElement("button");
-      closedbutton.className = "btn-close";
-      closedbutton.ariaLabel = "Close";
-      main.appendChild(closedbutton);
       div.appendChild(img);
       main.appendChild(div);
       div.className = "p-3";
-      img.src = jeux[index].cover;
+      img.src = jeu.cover;
       img.width = 300;
       img.height = 200;
       img.addEventListener("click", (event) => {
-        sessionStorage.setItem("clé", jeux[index].name);
+        sessionStorage.setItem("clé", jeu.name);
         Redirect("/jeu");
       });
-      closedbutton.addEventListener("click", async (event) => {
-        event.preventDefault();
-        try {
-          const options = {
-            method: "Delete",
-          };
-
-          const response = await fetch(
-            `/api/jeu/delete/${jeux[index].name}`,
-            options
-          );
-          if (!response.ok) {
-            throw new Error(
-              "fetch error : " + response.status + " : " + response.statusText
-            );
-          }
-          const jeux2 = await response.json();
-        } catch (error) {
-          console.error("Homepage::error: ", error);
-        }
-        Redirect("/");
-      });
-    }
+    });
   } catch (error) {
     console.error("Homepage::error: ", error);
   }
