@@ -1,3 +1,4 @@
+import { Redirect } from "../Router/Router";
 import { getSessionObject } from "../utils/session";
 
 function getCookie(name) {
@@ -15,7 +16,7 @@ function cookie(name, cvalue) {
   var x = getCookie(name);
 
   if (x == "" || x == null) {
-    alert("Welcome to Steampunk Inc!");
+    console.log("Welcome to Steampunk Inc!");
     setCookie(name, "iwashere", 365);
     return false;
   } else {
@@ -58,12 +59,8 @@ const jeupage = async () => {
   const commentaire = document.createElement("div");
   const main = document.querySelector("#main");
 
-  const title = `<h3 class="text-center">${nomjeu}</3>`;
-  const text = document.createElement("p");
-  
-
   try {
-    const response = await fetch(`/api/jeu?age=${nomjeu}`);
+    const response = await fetch(`/api/jeu?name=${nomjeu}`);
     if (!response.ok) {
       throw new Error(
         "fetch error : " + response.status + " : " + response.statusText
@@ -123,22 +120,22 @@ const jeupage = async () => {
       <td class="text-center"><p> Resume : ${jeux.summary}  </p></td> 
       </tr>
       <tr>
+      <td class="text-center"><p> Url : <a href="${jeux.url} ">${jeux.url} </a> </p></td> 
+      </tr>
+      <tr>
       <td class="text-center"><p>${choix} </p></td> 
       </tr>
     </tbody>
-  </table>`
-    
+  </table>`;
 
-  
-  main.appendChild(evaluation);
-  main.appendChild(envoyer);
+    main.appendChild(evaluation);
+    main.appendChild(envoyer);
 
-  main.appendChild(img);
-} catch (error) {
-  console.error("jeupage::error: ", error);
-}
+    main.appendChild(img);
+  } catch (error) {
+    console.error("jeupage::error: ", error);
+  }
   envoyer.innerHTML = "Voter";
-  //evaluation.innerHTML=choix
   envoyer.addEventListener("click", async (event) => {
     const result = document.querySelector(".form-select");
     if (cookie(`${user.username},${nomjeu}`, result.value) === false) {
@@ -155,8 +152,6 @@ const jeupage = async () => {
           },
         };
 
-        
-
         const response = await fetch("/api/liked", options);
 
         if (!response.ok) {
@@ -168,8 +163,9 @@ const jeupage = async () => {
         console.error("jeupage::error: ", error);
       }
     } else {
-      alert("vote");
+      alert("Vous avez déja voter");
     }
+    Redirect("/")
   });
 
   try {
@@ -222,10 +218,10 @@ const jeupage = async () => {
 
             afficherLike.innerHTML = nblike.like;
           } catch (error) {
-            console.error("changeusername::error: ", error);
+            console.error("jeupage::error: ", error);
           }
         } else {
-          alert("deja vote");
+          alert("Vous avez déja voter");
         }
       });
       main.appendChild(table);

@@ -36,13 +36,29 @@ const registerpage = `
     </div>`;
 function RegisterPage() {
   const erreur = document.createElement("h4");
+  const erreur2 =document.createElement("h4");
   const main = document.querySelector("#main");
   main.innerHTML = registerpage;
   const Form = document.querySelector("form");
-  const username = document.querySelector("#username");
+  var username = document.querySelector("#username");
   const password = document.querySelector("#password");
-  Form.addEventListener("submit", async (event) => { 
+  var utilisateur ;
+  Form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    try {
+      const response = await fetch(`/api/users/username/${username.value}`);
+      if (!response.ok) {
+        throw new Error(
+          "fetch error : " + response.status + " : " + response.statusText
+        );
+      }
+      const boolean = await response.json();
+       utilisateur = boolean
+      
+    } catch (error) {
+      console.error("RegisterPage::error: ", error);
+    }
+if(!utilisateur){
     try {
       const options = {
         method: "POST",
@@ -61,12 +77,16 @@ function RegisterPage() {
         throw new Error(
           "fetch error : " + response.status + " : " + response.statusText
         );
-      }      
+      }
       Redirect("/login");
     } catch (error) {
       main.appendChild(erreur);
       console.error("RegisterPage::error: ", error);
     }
+  }else{
+    main.appendChild(erreur2);
+    erreur2.innerHTML = "Error,username deja utilise";
+  }
   });
   erreur.innerHTML = "Error, password and username can't be empty";
 }
