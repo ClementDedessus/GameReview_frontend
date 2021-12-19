@@ -1,3 +1,11 @@
+/***
+*    Title:stackoverflow
+*    Author: Jarmo Sarantila
+*    Date: mercredi 16 2021
+*    Code version: 
+*    Availability: https://stackoverflow.com/questions/31706569/javascript-function-to-execute-only-once
+***/
+
 function getCookie(name) {
   var value = "; " + document.cookie;
   var parts = value.split("; " + name + "=");
