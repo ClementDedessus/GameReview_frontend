@@ -25,7 +25,7 @@ const HomePage = async () => {
     console.error("Homepage::error: ", error);
   }
 
-  if(!vote){
+  if(!vote && user){
   try {
     const response = await fetch(`/api/liked/${user.username}`);
     if (!response.ok) {
