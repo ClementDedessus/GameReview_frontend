@@ -5,3 +5,5 @@ Auteurs:
 *leolamien
 *ragenford
 *ClementDedessus
+
+Attention lors de l'ajout d'un jeu, la cover doit être un lien comme ce site propose : https://alphacoders.com/
